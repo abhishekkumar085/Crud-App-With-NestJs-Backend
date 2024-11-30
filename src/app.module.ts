@@ -5,6 +5,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { UserModule } from './user/user.module';
 import { ConfigModule } from '@nestjs/config';
 import { DB_HOST, DB_NAME, DB_PASSWORD, DB_PORT, DB_USERNAME } from './config/serverConfig';
+import { User } from './user/entities/user.entity';
 
 
 @Module({
@@ -18,13 +19,13 @@ import { DB_HOST, DB_NAME, DB_PASSWORD, DB_PORT, DB_USERNAME } from './config/se
       port:DB_PORT,
       password:DB_PASSWORD,
       username:DB_USERNAME,
-      entities:[],
+      entities:[User],
       database:DB_NAME,
       synchronize:true,
       logging:true,
     }),
     UserModule,
-    // UserModule
+    
   ],
   controllers: [AppController],
   providers: [AppService],
